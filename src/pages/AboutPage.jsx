@@ -54,8 +54,8 @@ export default function AboutPage() {
             skilled human artistry and innovative technological solutions. We do
             not aim to meet industry benchmarks; we aim to set them. Every project
             is approached with a holistic methodology, ensuring that every
-            detail—from the foundational concrete to the final architectural
-            finish—is thoughtfully orchestrated to exceed the most demanding
+            detail — from the foundational concrete to the final architectural
+            finish — is thoughtfully orchestrated to exceed the most demanding
             expectations.
           </p>
         </div>
@@ -70,7 +70,7 @@ export default function AboutPage() {
 
         <div className="founder-content">
           <div className="founder-header">
-            <h2>Founder Details</h2>
+            <h2>Founder</h2>
             <div className="header-accent"></div>
           </div>
 

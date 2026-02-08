@@ -24,7 +24,7 @@
 }
 
 /* ===============================
-   HERO SECTION - MATCHING PROJECTS
+   HERO SECTION - LEFT ALIGNED
 ================================ */
 
 .residuals-hero {
@@ -32,13 +32,13 @@
   height: 500px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* Changed from center to flex-start */
   margin-bottom: 0;
   background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2070');
   background-size: cover;
   background-position: center;
   overflow: hidden;
-  padding: 0 40px;
+  padding: 0 80px; /* Increased left padding */
 }
 
 .residuals-hero-overlay {
@@ -56,12 +56,12 @@
 .residuals-hero-content {
   position: relative;
   z-index: 2;
-  text-align: center;
+  text-align: left; /* Changed from center to left */
   color: #ffffff;
   max-width: 900px;
   padding: 0;
   opacity: 0;
-  animation: heroContentReveal 1s ease 0.3s forwards;
+  animation: heroContentRevealLeft 1s ease 0.3s forwards; /* New animation */
 }
 
 .residuals-hero-content h2 {
@@ -87,8 +87,8 @@
   text-shadow: 
     0 4px 18px rgba(0, 0, 0, 0.9),
     0 2px 10px rgba(0, 0, 0, 0.8);
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 700px; /* Reduced for left alignment */
+  margin: 0; /* Remove auto centering */
 }
 
 /* ===============================
@@ -190,14 +190,37 @@
 }
 
 /* ===============================
-   QUOTE SECTION - REDUCED SPACING
+   QUOTE SECTION - PREMIUM BLACK TEXT, NO BACKGROUND
 ================================ */
 
 .residuals-quote-section {
-  padding: 60px 40px;
-  background: linear-gradient(135deg, #f5f3ef 0%, #f9f7f4 100%);
-  border-top: 1px solid rgba(201,184,150,0.1);
-  border-bottom: 1px solid rgba(201,184,150,0.1);
+  padding: 80px 40px;
+  background: transparent; /* Removed gray background */
+  border-top: none; /* Removed borders */
+  border-bottom: none;
+  position: relative;
+}
+
+.residuals-quote-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,184,150,0.3), transparent);
+}
+
+.residuals-quote-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,184,150,0.3), transparent);
 }
 
 .residuals-quote {
@@ -205,7 +228,7 @@
   margin: 0 auto;
   max-width: 900px;
   opacity: 0;
-  animation: fadeIn 0.9s ease 0.8s forwards;
+  animation: quoteReveal 1.2s ease 0.3s forwards; /* Premium animation */
 }
 
 .residuals-quote p {
@@ -213,29 +236,32 @@
   font-size: 28px;
   font-weight: 400;
   font-style: italic;
-  color: #c9b896;
+  color: #1a1a1a; /* Changed from #c9b896 to black */
   position: relative;
-  padding: 0 40px;
+  padding: 0 60px;
+  line-height: 1.8;
+  letter-spacing: 0.3px;
 }
 
 .residuals-quote p::before,
 .residuals-quote p::after {
   content: '"';
-  font-size: 48px;
-  color: rgba(201,184,150,0.3);
+  font-size: 60px;
+  color: rgba(201,184,150,0.25); /* Subtle gold quotation marks */
   position: absolute;
   font-style: normal;
   font-family: "Playfair Display", serif;
+  font-weight: 300;
 }
 
 .residuals-quote p::before {
   left: 0;
-  top: -10px;
+  top: -15px;
 }
 
 .residuals-quote p::after {
   right: 0;
-  bottom: -20px;
+  bottom: -25px;
 }
 
 /* ===============================
@@ -417,9 +443,30 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes heroContentReveal {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes heroContentRevealLeft {
+  from { 
+    opacity: 0; 
+    transform: translateX(-40px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0);
+  }
+}
+
+@keyframes quoteReveal {
+  0% { 
+    opacity: 0; 
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.02);
+  }
+  100% { 
+    opacity: 1; 
+    transform: scale(1);
+  }
 }
 
 /* ===============================
@@ -442,6 +489,14 @@
   .main-image-container {
     height: 700px;
   }
+
+  .residuals-hero {
+    padding: 0 100px;
+  }
+
+  .residuals-quote p {
+    font-size: 32px;
+  }
 }
 
 /* ===============================
@@ -451,6 +506,7 @@
 @media (max-width: 1199px) {
   .residuals-hero {
     height: 450px;
+    padding: 0 60px;
   }
 
   .residuals-hero-content h2 {
@@ -486,6 +542,15 @@
     width: 22px;
     height: 22px;
   }
+
+  .residuals-quote-section {
+    padding: 70px 40px;
+  }
+
+  .residuals-quote p {
+    font-size: 26px;
+    padding: 0 50px;
+  }
 }
 
 /* ===============================
@@ -499,7 +564,12 @@
 
   .residuals-hero {
     height: 380px;
-    padding: 0 28px;
+    padding: 0 32px;
+    justify-content: flex-start;
+  }
+
+  .residuals-hero-content {
+    text-align: left;
   }
 
   .residuals-hero-content h2 {
@@ -510,6 +580,7 @@
   .residuals-hero-content p.residuals-desc {
     font-size: 16px;
     line-height: 1.65;
+    max-width: 100%;
   }
 
   .residuals-content-section {
@@ -540,12 +611,22 @@
   }
 
   .residuals-quote-section {
-    padding: 50px 24px;
+    padding: 60px 24px;
   }
 
   .residuals-quote p {
     font-size: 22px;
     padding: 0 30px;
+  }
+
+  .residuals-quote p::before {
+    font-size: 50px;
+    top: -12px;
+  }
+
+  .residuals-quote p::after {
+    font-size: 50px;
+    bottom: -20px;
   }
 
   .residuals-category-section {
@@ -603,6 +684,10 @@
     padding: 0 24px;
   }
 
+  .residuals-hero-content {
+    text-align: left;
+  }
+
   .residuals-hero-content h2 {
     font-size: 32px;
   }
@@ -610,6 +695,7 @@
   .residuals-hero-content p.residuals-desc {
     font-size: 15px;
     line-height: 1.6;
+    max-width: 100%;
   }
 
   .residuals-content-section {
@@ -639,12 +725,25 @@
   }
 
   .residuals-quote-section {
-    padding: 40px 20px;
+    padding: 50px 20px;
   }
 
   .residuals-quote p {
     font-size: 20px;
     padding: 0 24px;
+    line-height: 1.7;
+  }
+
+  .residuals-quote p::before {
+    font-size: 45px;
+    top: -10px;
+    left: -5px;
+  }
+
+  .residuals-quote p::after {
+    font-size: 45px;
+    bottom: -18px;
+    right: -5px;
   }
 
   .residuals-category-section {
